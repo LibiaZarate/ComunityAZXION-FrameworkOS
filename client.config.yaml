@@ -1,0 +1,88 @@
+schema_version: "1.0"
+
+client:
+  id: "[client-id]"
+  name: "[Nombre del negocio]"
+  vertical: "[vertical o generic]"
+  timezone: "America/Mexico_City"
+  owner: "[responsable del sistema]"
+
+business:
+  model: "[cómo gana dinero]"
+  icp: "[cliente ideal resumido]"
+  offer: "[oferta prioritaria]"
+  north_star_metric: "[métrica económica principal]"
+  revenue_event: "[evento que confirma ingreso real]"
+  current_constraint: "unknown"
+
+domains:
+  marketing: false
+  sales: true
+  product: false
+  customer_success: false
+
+sources: []
+# Ejemplo:
+# - id: whatsapp
+#   system: meta_cloud_api
+#   purpose: capture_conversations
+#   authoritative_for: [message_delivered, human_reply]
+
+integrations: []
+# Toda integración debe tener contrato en integraciones/contracts/.
+
+governance:
+  autonomous:
+    - capture_event
+    - calculate_metric
+    - detect_data_quality_issue
+  assisted:
+    - summarize_conversation
+    - suggest_next_action
+    - classify_objection
+  approval_required:
+    - send_sensitive_message
+    - change_commercial_rule
+    - mark_high_value_opportunity_lost
+    - deploy_to_production
+  human_only:
+    - approve_discount
+    - change_offer
+    - authorize_sensitive_data_access
+
+# Cuánto trabajo manual puede costar este sistema al día.
+# Un sistema que excede su presupuesto se abandona, por bueno que sea el modelo.
+# Ver sops/limites-de-operacion.md §1.
+adoption_budget:
+  operator_role: "[rol que sostiene el sistema todos los días]"
+  max_daily_actions: 15
+  measured_by: "[clics, campos capturados, movimientos de tarjeta]"
+
+operating_cadence:
+  daily_review: true
+  monday_decision_brief: true
+  weekly_kaizen: true
+  experiment_primary_variables: 1
+
+quality_gates:
+  minimum_metric_coverage: 0.90
+  # La cobertura se evalúa por RAMA de captura, no promediada por sistema:
+  # dos ramas de la misma fuente pueden estar en 1.00 y en 0.05.
+  coverage_evaluated_by_segment: true
+  require_source_for_metrics: true
+  require_acceptance_criteria: true
+  require_rollback_for_production_changes: true
+  show_not_measurable_when_incomplete: true
+  # Toda intervención medible se despliega por asignación determinista con
+  # control instrumentado. Ver experimentos/asignacion-deterministica.md.
+  require_control_arm_for_experiments: true
+  # Lo construido y no desplegado vale cero y se reporta con días.
+  track_deployment_debt: true
+  # Lo detenido por un tercero se reporta como bloqueado, nunca como "en curso".
+  track_external_blockers: true
+
+security:
+  isolated_repository: true
+  isolated_database: true
+  secrets_in_environment_only: true
+  production_human_approval: true

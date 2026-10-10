@@ -1,0 +1,33 @@
+id: "[integration-id]"
+system: "[provider/product]"
+purpose: "[decisión o flujo que habilita]"
+owner: "[rol]"
+
+data_contract:
+  reads: []
+  writes: []
+  authoritative_for: []
+  identifiers: []
+
+authentication:
+  method: "[oauth, api_key, service_account]"
+  required_env_vars: []
+  minimum_scopes: []
+
+reliability:
+  idempotency_key: "[campo]"
+  retry_policy: "[política]"
+  dead_letter_behavior: "[acción]"
+  reconciliation_schedule: "[frecuencia]"
+  health_check: "[prueba observable]"
+
+security:
+  personal_data: false
+  sensitive_fields: []
+  retention: "[política]"
+
+cost:
+  pricing_model: "[subscription, usage, credits]"
+  owner_pays: client
+
+acceptance_tests: []

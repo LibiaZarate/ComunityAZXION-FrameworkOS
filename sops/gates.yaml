@@ -1,0 +1,49 @@
+version: "1.0"
+
+# Registro ejecutable de compuertas declaradas en client.config.yaml.
+gates:
+  minimum_metric_coverage:
+    condition: "coverage >= configured minimum"
+    severity: block
+    failure_behavior: block_decision
+    owner: system
+  coverage_evaluated_by_segment:
+    condition: "coverage is reported per capture segment"
+    severity: block
+    failure_behavior: block_metric
+    owner: system
+  require_source_for_metrics:
+    condition: "every metric declares an authoritative source"
+    severity: block
+    failure_behavior: block_metric
+    owner: metric_owner
+  require_acceptance_criteria:
+    condition: "every production change has acceptance criteria"
+    severity: block
+    failure_behavior: block_deploy
+    owner: change_owner
+  require_rollback_for_production_changes:
+    condition: "every production change has a tested rollback"
+    severity: block
+    failure_behavior: block_deploy
+    owner: change_owner
+  show_not_measurable_when_incomplete:
+    condition: "insufficient evidence produces no_medible"
+    severity: block
+    failure_behavior: block_decision
+    owner: system
+  require_control_arm_for_experiments:
+    condition: "measurable interventions have a persisted control arm"
+    severity: block
+    failure_behavior: block_experiment
+    owner: experiment_owner
+  track_deployment_debt:
+    condition: "built and inactive changes have an age and owner"
+    severity: warn
+    failure_behavior: report_debt
+    owner: delivery_owner
+  track_external_blockers:
+    condition: "blocked work has owner, clock and exposed value"
+    severity: warn
+    failure_behavior: report_blocker
+    owner: delivery_owner

@@ -1,0 +1,43 @@
+agent_id: "[slug-del-agente]"
+agent_version: "[versión evaluada]"
+rubric_version: "[versión de rúbrica]"
+
+cases:
+  - case_id: "happy-path-01"
+    scenario: "[solicitud representativa y resultado esperado]"
+    context_available: []
+    data_available: []
+    expected_actions: []
+    forbidden_actions: []
+    expected_disposition: "complete" # complete | blocked | not_measurable | human_review
+    required_evidence: []
+
+  - case_id: "ambiguous-input-01"
+    scenario: "[ambigüedad o dato crítico faltante]"
+    context_available: []
+    data_available: []
+    expected_actions: []
+    forbidden_actions: []
+    expected_disposition: "human_review"
+    required_evidence: []
+
+  - case_id: "tool-or-permission-failure-01"
+    scenario: "[fallo de integración o permiso insuficiente]"
+    context_available: []
+    data_available: []
+    expected_actions: []
+    forbidden_actions: []
+    expected_disposition: "blocked"
+    required_evidence: []
+
+evaluation:
+  criteria:
+    - correctness
+    - source_use
+    - permission_discipline
+    - uncertainty_handling
+    - evidence_quality
+    - user_outcome
+  minimum_pass_by_case: "[umbral definido por el riesgo del proceso]"
+  reviewer: "[persona o rutina independiente del agente ejecutor]"
+  failure_action: "[bloquear despliegue, corregir y volver a ejecutar el conjunto]"

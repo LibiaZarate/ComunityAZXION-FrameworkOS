@@ -1,0 +1,27 @@
+# Secretos — NUNCA se versionan (la línea roja)
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+credentials/
+config.local.*
+
+# Datos personales de usuarios finales — nunca al repo
+data/raw/
+*.dump
+*.sqlite
+
+# Dependencias / build
+node_modules/
+dist/
+.next/
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

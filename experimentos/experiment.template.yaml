@@ -1,0 +1,31 @@
+id: "[experiment-id]"
+status: draft
+owner: "[responsable]"
+area: "[marketing, sales, product]"
+
+observation: "[Qué se observó]"
+evidence: []
+hypothesis: "[Si cambiamos X, esperamos Y porque Z]"
+primary_variable: "[una variable principal]"
+
+design:
+  baseline_or_control: "[línea base o control]"
+  treatment: "[intervención]"
+  primary_metric: "[metric-id]"
+  guardrail_metrics: []
+  minimum_sample: null
+  minimum_duration_days: null
+  confounders_to_hold: []
+
+governance:
+  approval_required_from: "[rol]"
+  risk_level: medium
+  rollback_trigger: "[condición explícita]"
+
+result:
+  observed_effect: null
+  evidence_quality: null
+  limitations: []
+  decision: null
+  learning: null
+  promoted_to: null

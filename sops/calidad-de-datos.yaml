@@ -1,0 +1,19 @@
+version: "1.0"
+
+# Contrato mínimo por fuente. Se copia y completa en cada instancia.
+source_contract:
+  id: "[source-id]"
+  owner: "[responsable]"
+  authoritative_for: []
+  expected_volume: null
+  freshness_sla_minutes: null
+  deduplication_key: "[clave o no_medible]"
+  required_fields: []
+  reconciliation_rule: "[cómo se compara con otra fuente]"
+  retention_days: null
+  privacy_class: "[public, internal, personal, sensitive]"
+
+observation:
+  dimensions: [coverage, completeness, consistency, freshness, uniqueness, lineage]
+  quarantine_invalid_events: true
+  no_medible_when_missing: true

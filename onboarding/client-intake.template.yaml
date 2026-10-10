@@ -1,0 +1,70 @@
+# Formulario de entrada. Se completa con el cliente y luego se destila a client.config.yaml.
+version: "1.0"
+
+client:
+  name: ""
+  legal_name: ""
+  vertical: ""
+  timezone: "America/Mexico_City"
+  primary_contact: ""
+  technical_contact: ""
+
+business:
+  what_you_sell: ""
+  how_you_make_money: ""
+  revenue_event: ""
+  average_order_value: ""
+  margin_or_unit_economics: ""
+  north_star_metric: ""
+  target_result: ""
+  current_constraint: ""
+
+offer_and_customer:
+  offer_priority: ""
+  buyer: ""
+  user: ""
+  decision_maker: ""
+  ideal_customer: ""
+  disqualifiers: []
+  common_objections: []
+  approval_exceptions: []
+
+process:
+  priority_journey: ""
+  stages: []
+  channels: []
+  handoffs: []
+  manual_steps: []
+  failure_points: []
+  post_sale_process: ""
+
+data_and_tools:
+  systems: []
+  authoritative_source_by_event: {}
+  reconciliation_ids: []
+  historical_period_reliable: ""
+  sensitive_data_present: false
+  retention_requirements: ""
+  rate_limits: {}
+
+intelligence:
+  conversational_channels: []
+  tone_examples: []
+  approved_answers: []
+  forbidden_answers: []
+  escalation_rules: []
+  human_only_decisions: []
+
+adoption:
+  daily_users: []
+  operator_role: ""
+  training_needs: []
+  max_daily_manual_actions: ""
+  acceptance_examples: []
+
+approval:
+  scope_inclusions: []
+  scope_exclusions: []
+  success_definition_10_of_10: ""
+  client_approver: ""
+  target_pilot_date: ""

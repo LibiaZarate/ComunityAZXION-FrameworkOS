@@ -1,0 +1,43 @@
+agent_id: "[slug-del-agente]"
+version: "0.1.0"
+status: "discovery" # discovery | observed | reviewed | bounded_autonomy | paused
+owner: "[responsable-del-negocio]"
+
+purpose: "[un resultado acotado que el agente habilita]"
+workflow_area: "[marketing | contenido | ventas | delivery | producto | inteligencia]"
+workflow_ref: "[ruta al proceso/framework vigente]"
+
+trigger: "[qué evento o solicitud inicia esta tarea]"
+inputs:
+  required: []
+  optional: []
+context_sources: []
+data_sources:
+  - system: "[fuente autoritativa]"
+    fields: []
+    freshness: "[frecuencia o fecha de consulta]"
+
+tools:
+  read: []
+  write: []
+  external_effects: []
+decision_limits:
+  may_decide: []
+  must_escalate: []
+  requires_human_approval: []
+
+output:
+  format: "[artefacto o campos de salida]"
+  required_evidence: []
+  allowed_dispositions: ["complete", "blocked", "not_measurable", "human_review"]
+
+verification:
+  eval_cases_ref: "[ruta a eval.template.yaml o conjunto versionado]"
+  acceptance_criteria: []
+  production_surface: "[dónde se observa que el resultado ocurrió]"
+  rollback: "[cómo revertir el efecto, o n/a si no escribe]"
+
+observability:
+  trace_fields: ["run_id", "agent_version", "source_refs", "tool_calls", "disposition", "evidence_refs"]
+  metrics: []
+  retention_policy: "[política del cliente; no incluir datos personales en logs innecesarios]"

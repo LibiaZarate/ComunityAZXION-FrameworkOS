@@ -1,0 +1,40 @@
+id: "[metric-id]"
+name: "[Nombre legible]"
+question: "[Qué pregunta responde]"
+decision_enabled: "[Qué decisión permite tomar]"
+owner: "[Rol responsable]"
+
+definition:
+  type: ratio
+  numerator: "[evento o expresión]"
+  denominator: "[evento o expresión]"
+  unit: percentage
+  window: "[7d, 30d, cohort, etc.]"
+  timezone: "[IANA timezone]"
+  exclusions: []
+
+sources:
+  authoritative: []
+  reconciliation: []
+
+quality:
+  minimum_coverage: 0.90
+  # Ramas de captura sobre las que se evalúa la cobertura POR SEPARADO.
+  # Una métrica cuyo denominador mezcla una rama instrumentada con una ciega
+  # es falsa aunque el promedio pase el umbral.
+  coverage_segments: []
+  minimum_sample: 30
+  maximum_latency_minutes: 1440
+  on_insufficient_data: no_medible
+  # Qué se muestra en pantalla junto al número, siempre.
+  display_with_coverage: true
+
+interpretation:
+  higher_is_better: true
+  baseline: null
+  target: null
+  limitations: []
+
+validation:
+  acceptance_tests: []
+  last_verified_at: null

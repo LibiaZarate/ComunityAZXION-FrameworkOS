@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://azxion.com/schemas/client.config.schema.json",
+  "title": "AZXION client configuration",
+  "type": "object",
+  "required": ["schema_version", "client", "business", "domains", "sources", "integrations", "governance", "adoption_budget", "operating_cadence", "quality_gates", "security"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
+    "client": {
+      "type": "object", "required": ["id", "name", "vertical", "timezone", "owner"],
+      "properties": {
+        "id": {"type": "string", "minLength": 2},
+        "name": {"type": "string", "minLength": 2},
+        "vertical": {"type": "string", "minLength": 2},
+        "timezone": {"type": "string", "minLength": 3},
+        "owner": {"type": "string", "minLength": 2}
+      }, "additionalProperties": false
+    },
+    "business": {
+      "type": "object", "required": ["model", "icp", "offer", "north_star_metric", "revenue_event", "current_constraint"],
+      "properties": {
+        "model": {"type": "string", "minLength": 2},
+        "icp": {"type": "string", "minLength": 2},
+        "offer": {"type": "string", "minLength": 2},
+        "north_star_metric": {"type": "string", "minLength": 2},
+        "revenue_event": {"type": "string", "minLength": 2},
+        "current_constraint": {"type": "string", "minLength": 2}
+      }, "additionalProperties": false
+    },
+    "domains": {"type": "object", "additionalProperties": {"type": "boolean"}},
+    "sources": {
+      "type": "array", "items": {"type": "object", "required": ["id", "system", "purpose", "authoritative_for"], "properties": {
+        "id": {"type": "string", "minLength": 2}, "system": {"type": "string", "minLength": 2}, "purpose": {"type": "string", "minLength": 2}, "authoritative_for": {"type": "array", "items": {"type": "string"}}
+      }, "additionalProperties": false}
+    },
+    "integrations": {"type": "array", "items": {"type": "object", "required": ["id"], "properties": {"id": {"type": "string", "minLength": 2}}, "additionalProperties": true}},
+    "governance": {"type": "object", "required": ["autonomous", "assisted", "approval_required", "human_only"], "additionalProperties": {"type": "array", "items": {"type": "string"}}},
+    "adoption_budget": {"type": "object", "required": ["operator_role", "max_daily_actions", "measured_by"], "properties": {"operator_role": {"type": "string", "minLength": 2}, "max_daily_actions": {"type": "integer", "minimum": 1}, "measured_by": {"type": "string", "minLength": 2}}, "additionalProperties": false},
+    "operating_cadence": {"type": "object", "required": ["daily_review", "monday_decision_brief", "weekly_kaizen", "experiment_primary_variables"], "properties": {"daily_review": {"type": "boolean"}, "monday_decision_brief": {"type": "boolean"}, "weekly_kaizen": {"type": "boolean"}, "experiment_primary_variables": {"type": "integer", "const": 1}}, "additionalProperties": false},
+    "quality_gates": {"type": "object", "required": ["minimum_metric_coverage", "coverage_evaluated_by_segment", "require_source_for_metrics", "require_acceptance_criteria", "require_rollback_for_production_changes", "show_not_measurable_when_incomplete", "require_control_arm_for_experiments", "track_deployment_debt", "track_external_blockers"], "properties": {"minimum_metric_coverage": {"type": "number", "minimum": 0, "maximum": 1}, "coverage_evaluated_by_segment": {"type": "boolean"}, "require_source_for_metrics": {"type": "boolean"}, "require_acceptance_criteria": {"type": "boolean"}, "require_rollback_for_production_changes": {"type": "boolean"}, "show_not_measurable_when_incomplete": {"type": "boolean"}, "require_control_arm_for_experiments": {"type": "boolean"}, "track_deployment_debt": {"type": "boolean"}, "track_external_blockers": {"type": "boolean"}}, "additionalProperties": false},
+    "security": {"type": "object", "required": ["isolated_repository", "isolated_database", "secrets_in_environment_only", "production_human_approval"], "properties": {"isolated_repository": {"type": "boolean"}, "isolated_database": {"type": "boolean"}, "secrets_in_environment_only": {"type": "boolean"}, "production_human_approval": {"type": "boolean"}}, "additionalProperties": false}
+  },
+  "additionalProperties": false
+}
